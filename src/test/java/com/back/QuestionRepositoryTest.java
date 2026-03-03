@@ -23,7 +23,9 @@ public class QuestionRepositoryTest {
     private AnswerRepository answerRepository;
 
 //    @Test
-//    void t1() {
+//    void tt() {
+
+    // v1
 //        Question q1 = new Question();
 //        q1.setSubject("sbb가 무엇인가요?");
 //        q1.setContent("sbb에 대해서 알고 싶습니다.");
@@ -38,7 +40,27 @@ public class QuestionRepositoryTest {
 //        a2.setContent("sbb는 스프링부트 게시판입니다.2");
 //        a2.setQuestion(q1);
 //        answerRepository.save(a2);
+
+    // v2
+
+//        Question q1 = new Question();
+//        q1.setSubject("sbb가 무엇인가요?");
+//        q1.setContent("sbb에 대해서 알고 싶습니다.");
 //
+//        Answer a1 = new Answer();
+//        a1.setContent("sbb는 스프링부트 게시판입니다.1");
+//
+//        Answer a2 = new Answer();
+//        a1.setContent("sbb는 스프링부트 게시판입니다.2");
+//
+//        q1.getAnswerList().add(a1); // 부모에 자식을 연결
+//        a1.setQuestion(q1); // 자식에 부모를 연결
+//
+//        q1.getAnswerList().add(a2); // 부모에 자식을 연결
+//        a2.setQuestion(q1); // 자식에 부모를 연결
+//
+//        questionRepository.save(q1);
+
 //    }
 
     /*@Test
@@ -115,16 +137,15 @@ public class QuestionRepositoryTest {
     @DisplayName("답글 저장")
     @Transactional
     void t6() {
-        Question q1 = new Question();
-        q1.setSubject("새 질문");
-        q1.addAnswer("답글 1");
-        questionRepository.save(q1);
+        Question q1 = questionRepository.findById(1).get();
+        q1.addAnswer("답글1");
+
         questionRepository.flush();
 
         Answer foundedAnswer = answerRepository.findById(1).get();
 
         assertThat(foundedAnswer.getId()).isEqualTo(1);
-        assertThat(foundedAnswer.getContent()).isEqualTo("답글 1");
+        assertThat(foundedAnswer.getContent()).isEqualTo("답글1");
 
     }
 
