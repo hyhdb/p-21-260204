@@ -6,10 +6,10 @@
 </head>
 <body>
 <h1>question_list</h1>
+<div th:text="${myAge}">10</div>
+<div th:text="${questionList.size()}">10</div>
 <ul>
-    <li>item1</li>
-    <li>item2</li>
-    <li>item3</li>
+    <li th:each="question : ${questionList}" th:text="${question.subject}"></li>
 </ul>
 </body>
 </html>
